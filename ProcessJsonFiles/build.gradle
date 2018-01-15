@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+// Added to allow gradle's buildscript to run Junit 5' unit tests.
+// This is not a project's dependency.
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath('org.junit.platform:junit-platform-gradle-plugin:1.0.2')
+    }
+}
+
+dependencies {
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+    // Used in runtime. Not having it makes the app unable to use project's log4j2.xml
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+    compile group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.2.0'
+
+    // To export J8's Optional(s) values (their actually content and not a boolean telling whether it's present or not)
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: '2.6.3'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.0.2'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.0.2'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-gradle-plugin', version: '1.0.1'
+
+    // See https://github.com/junit-team/junit5-samples/issues/45
+    testCompile group: 'org.apiguardian', name: 'apiguardian-api', version: '1.0.0'
+
+    testCompile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+
+    // Spark unit test framework
+    testCompile group: 'com.holdenkarau', name: 'spark-testing-base_2.11', version: '2.2.0_0.8.0'
+
+    // To run Junit5' units test as a gradle task: gradle test
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.1'
+    testRuntime group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.0.1'
+    testRuntime group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.0.1'
+}
+
+// Define app's main class (i.e. the one that has the main method I want to be called)
+mainClassName = 'app.ExtractPeopleData'
+
+run {
+    standardInput = System.in; // Tells gradle to run the app interactively (i.e. wait for user input)
+
+    // Defines how to specify CLI line parameters. Example using gradle wrapper: ./gradlew run -Dexec.args="Param1 Param2"
+    args System.getProperty("exec.args", "").split(" ")
+}
