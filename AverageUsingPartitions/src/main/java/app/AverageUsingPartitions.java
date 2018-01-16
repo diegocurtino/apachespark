@@ -24,6 +24,8 @@ public final class AverageUsingPartitions {
 
         Average result = rdd.mapPartitions(combineRddElementsWithAccumulatorAndReturnIterator()).reduce(mergeAccumulators());
         System.out.println("Average calculated using partitions is: " + result.getAverage());
+
+        sc.close();
     }
 
     private static FlatMapFunction<Iterator<Integer>, Average> combineRddElementsWithAccumulatorAndReturnIterator() {
