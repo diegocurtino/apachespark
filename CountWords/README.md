@@ -26,9 +26,9 @@ To be able to run this application using gradle in Windows, you need:
 where <code><inputFilename></code> is the file where you want to count words and 
 <code><outputDirectory></code> is where you want Spark to save the results. 
 
-Ex using the <code>README.md</code> file included in <code>src/main/resources</code> and storing the resulting in the <code>out</code> directory:
+Ex using the <code>SampleReadme.md</code> file included in <code>src/main/resources</code> and storing the resulting in the <code>out</code> directory:
 <br>
-<code>./gradlew run -Dexec.args="src/main/resources/README.md out"</code>
+<code>./gradlew run -Dexec.args="src/main/resources/SampleReadme.md out"</code>
 
 <H1>Output</H1>
 
@@ -38,7 +38,7 @@ After running it, in between all the <code>INFO</code> that Sparks prints in the
 
 <pre>
 <code>
-2018-01-16 10:54:37,754 [main] INFO  app.CountWords - Counting words from src/main/resources/README.md file
+2018-01-16 10:54:37,754 [main] INFO  app.CountWords - Counting words from src/main/resources/SampleReadme.md file
 ...
 2018-01-16 10:54:38,390 [main] INFO  utils.filesystem.DeleteFileTreeVisitor - Deleting the content of directory C:\SparkHadoopTutorials\CountWords\out
 2018-01-16 10:54:38,391 [main] INFO  utils.filesystem.DeleteFileTreeVisitor - Deleting file C:\SparkHadoopTutorials\CountWords\out\.part-00000.crc
