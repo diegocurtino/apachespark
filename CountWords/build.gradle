@@ -3,18 +3,21 @@ apply plugin: 'application'
 
 repositories {
     mavenCentral()
-	jcenter()
+    jcenter()
 }
 
 dependencies {
     compile 'com.google.guava:guava:23.0'
-	compile 'org.apache.spark:spark-core_2.10:1.3.0'
-	
+    compile 'org.apache.spark:spark-core_2.10:1.3.0'
+
+    // Used in runtime. Not having it makes the app unable to use project's log4j2.xml
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+
     testCompile 'junit:junit:4.12'
 }
 
 // Define the main class for the application
-mainClassName = 'App'
+mainClassName = 'app.CountWords'
 
 run {
     args System.getProperty("exec.args", "").split(" ")
