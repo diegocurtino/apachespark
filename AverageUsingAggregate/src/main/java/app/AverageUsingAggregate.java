@@ -1,13 +1,12 @@
 package app;
 
-import java.util.Arrays;
-
 import internal.Average;
-
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function2;
+
+import java.util.Arrays;
 
 public class AverageUsingAggregate {
 
@@ -27,7 +26,8 @@ public class AverageUsingAggregate {
         // 3rd: function to merge workers' aggregator.
         Average result = rdd.aggregate(initialValue, combineRddElementsWithAccumulator(), mergeWorkerAggregators());
         System.out.println("The average is: " + result.getAverage());
-        sc.stop();
+
+        sc.close();
     }
 
     private static Function2<Average, Integer, Average> combineRddElementsWithAccumulator() {
