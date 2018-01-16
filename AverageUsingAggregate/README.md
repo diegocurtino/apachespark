@@ -22,3 +22,9 @@ To be able to run this application using gradle in Windows, you need:
 	<li>Go to local copy of repo's AverageUsingAverage directory</li>
 	<li>Run <code>./gradlew run</code></li>
 </ol>
+
+<H1>Output</H1>
+
+After having run it, in between all the <code>INFO</code> that Sparks prints in the console, you should this:
+
+<code>The average is: 2.5</code>
