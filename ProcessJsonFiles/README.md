@@ -1,10 +1,10 @@
-#ProcesJsonFiles
+# ProcesJsonFiles #
 
 This application takes the code from book's chapter 5 and develops it to resemble a _fully_ fledged Java application that can be run from OS's CLI to perform 3 different transformations over the input data. 
 
 It also contains code to generate different json files from the IDE. **Notice** that changing those json files will result in unit tests failing. That part of the application could be refined to allow the user decide where to output the json files. 
 
-##Prerequisites to run
+## Prerequisites to run ##
 
 To be able to run this application using gradle in Windows, you need:
 
@@ -12,9 +12,7 @@ To be able to run this application using gradle in Windows, you need:
 - gradle wrapper installed in **ProcesJsonFiles** directory
 
 
-##Run application
-
-###On Windows
+## Run application ##
 
 1. Open `git bash` (In Windows) or a terminal (any Unix OS) in your local copy of repo's **ProcesJsonFiles** directory
 2. Run `./gradlew run <inputFilename> <outputDirectory>`
@@ -38,9 +36,9 @@ Once run, the application will request the user to input an option to decide wha
 
 If no valid option (i.e. 1, 2 or 3) is input, the application will repeat this text until a valid option is selected or the application is killed.
 
-##Output
+## Output ##
 
-###Console output
+### Console output ###
 After running it, in between all the INFO that Sparks prints in the console, you should something like this:
 
     2018-01-22 12:31:08,223 [main] INFO  app.internal.PeopleRdd - Spark will process src/test/resources/minimal_people_singleLine.json file
@@ -50,14 +48,14 @@ After running it, in between all the INFO that Sparks prints in the console, you
     2018-01-22 12:31:09,693 [main] INFO  app.utils.filesystem.FileSystemOperations - Directory C:\SparkHadoopTutorials\ProcessJsonFiles\out\results does not exist. Nothing to delete
     2018-01-22 12:31:09,693 [main] INFO  app.utils.filesystem.FileSystemOperations - Processing results will be output in out/results directory
 
-###Spark files
+### Spark files ###
 Again, assuming you run the example above you should have a new directory `out/results` inside your local `ProcesJsonFiles` directory containing 4 files. The count of people per nationality is in the `part-00000` file. 
 
 The output should be this:
 
     (Elbonian,1)
 
-## Unit testing
+## Unit testing ##
 
 Unit tests for each one of the transformations offered by the application are included. They can be run from a gradle task.
 
@@ -103,6 +101,6 @@ You will be get an output like this:
 
     BUILD SUCCESSFUL in 16s
 
-## Json files creation
+## Json files creation ##
 
 TBC
