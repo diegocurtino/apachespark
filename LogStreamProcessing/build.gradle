@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.2.0'
+    compile group: 'org.apache.spark', name: 'spark-streaming_2.11', version: '2.2.1'
+}
